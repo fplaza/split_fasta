@@ -46,16 +46,16 @@ def num_with_si_suffix(num):
             }
 
     if num[-1].isdigit():
-        value=int(num)
+        value=float(num)
     else:
-        value=int(num[0:-1])
+        value=float(num[0:-1])
         suffix=num[-1]
         if suffix not in unit_to_value.keys():
             msg = "unknown suffix '{0}'".format(suffix)
             raise argparse.ArgumentTypeError(msg)
         value *= unit_to_value[suffix]
 
-    return value    
+    return int(value)
 
 def get_parameters():
     parser = argparse.ArgumentParser(description=__doc__,
